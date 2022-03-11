@@ -1,7 +1,7 @@
 # wordle-clone-api
-REST API for wordle-clone.
+A frontend agnostic and somewhat opinionated REST API for Wordle-like applications.
 
-To prevent cheating, the word will not be exposed to the client until the user has guessed the word. The API will also provide a mechanism to allow the user to guess the word via the `/word/guess` endpoint. The user should be notified if their guess is correct or incorrect based on the result provided.
+To prevent cheating, the word will not in any way be exposed to the client. This means that the client must communicate with the API each time a user is attempting to guess the word via the `/word/guess` endpoint. The result of the response will contain the correctness of locations as well as presence for each letter.
 
 # Quick Start
 ```bash
