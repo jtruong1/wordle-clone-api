@@ -45,7 +45,7 @@ Generates a new word and saves it in the session.
 | success | true |
 ---
 
-### POST - `/word/validate`
+### POST - `/word/guess`
 Compares the provided word against the generated word.
 
 ### Parameters

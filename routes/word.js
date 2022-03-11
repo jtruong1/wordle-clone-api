@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
   });
 });
 
-router.post('/validate', (req, res) => {
+router.post('/guess', (req, res) => {
   const { word } = req.body;
 
   const result = validateWord(word, req.session.word);
