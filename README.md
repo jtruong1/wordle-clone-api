@@ -1,5 +1,5 @@
 # wordle-clone-api
-A frontend agnostic and minimally opinionated REST API for Wordle-like applications.
+A minimally opinionated REST API for Wordle-like applications.
 
 To prevent cheating, the word will not be exposed to the client. This means that the client must communicate with the API any time a user wishes to guess the word. The result of the response will contain the correctness of presence and location for each letter.
 
