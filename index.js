@@ -8,7 +8,7 @@ const app = express();
 app.locals.word = getRandomWord();
 
 app.use(middleware());
-app.use(routes());
+app.use('/api', routes());
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
