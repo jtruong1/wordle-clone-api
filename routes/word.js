@@ -8,10 +8,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  req.generateState();
-
   res.status(201).json({
-    success: true,
+    state: req.generateState(),
   });
 });
 

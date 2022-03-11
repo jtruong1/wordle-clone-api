@@ -7,6 +7,8 @@ module.exports = (req, _res, next) => {
       id: uuidv4(),
       word: randomWord(),
     };
+
+    return req.session.state.id;
   };
 
   if (!req.session.state) {

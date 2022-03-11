@@ -1,7 +1,7 @@
 # wordle-clone-api
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/1c8487ffe2f9ddcb7491?action=collection%2Fimport)
 
-A minimally opinionated REST API for Wordle-like applications.
+A somewhat opinionated REST API for Wordle clones.
 
 To prevent cheating, the word will not be exposed to the client. This means that the client must communicate with the API any time a user wishes to guess the word. The result of the response will contain the correctness of presence and location for each letter.
 
@@ -44,9 +44,9 @@ Generates a new game state for the current session.
 | None  |      |             |
 
 ### Response
-| Output  | Type | Description |
-|---------|------|-------------|
-| success | true |             |
+| Output  | Type   | Description              |
+|---------|--------|--------------------------|
+| state   | string | The ID of the game state |
 ---
 
 ### POST - `/word/guess`
