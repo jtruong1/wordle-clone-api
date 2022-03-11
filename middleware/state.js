@@ -1,9 +1,8 @@
-// Ensure that the request has a state object
+const { getRandomWord } = require('../lib/util');
+
 module.exports = (req, res, next) => {
-  if (req.path !== '/' && !req.body.state) {
-    return res.status(400).send({
-      error: 'Missing state object',
-    });
+  if (!req.session.word) {
+    req.session.word = getRandomWord();
   }
 
   next();

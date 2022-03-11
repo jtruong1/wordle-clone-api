@@ -1,14 +1,10 @@
 const express = require('express');
-const validateRoute = require('./validate');
+const wordRoute = require('./word');
 
 module.exports = () => {
   const router = express.Router();
 
-  router.get('/', (req, res) => {
-    res.send(req.app.locals.word);
-  });
-
-  router.use('/validate', validateRoute);
+  router.use('/word', wordRoute);
 
   return router;
 };
