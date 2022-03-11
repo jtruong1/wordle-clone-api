@@ -1,7 +1,7 @@
 const { v4: uuidv4 } = require('uuid');
 const { randomWord } = require('../lib/word');
 
-module.exports = (req, res, next) => {
+module.exports = (req, _res, next) => {
   req.generateState = () => {
     req.session.state = {
       id: uuidv4(),
