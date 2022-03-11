@@ -11,14 +11,14 @@ router.post('/', (req, res) => {
   req.session.word = getRandomWord();
 
   res.status(201).json({
-    message: 'A new word has been generated',
+    success: true,
   });
 });
 
 router.post('/validate', (req, res) => {
-  const { state } = req.body;
+  const { word } = req.body;
 
-  const result = validateWord(state.word, req.session.word);
+  const result = validateWord(word, req.session.word);
 
   if (!result) {
     return res.status(404).json({
