@@ -1,12 +1,16 @@
+const { v4: uuidv4 } = require('uuid');
 const { getRandomWord } = require('../lib/util');
 
 module.exports = (req, res, next) => {
-  req.generateWord = () => {
-    req.session.word = getRandomWord();
+  req.generateState = () => {
+    req.session.state = {
+      id: uuidv4(),
+      word: getRandomWord(),
+    };
   };
 
-  if (!req.session.word) {
-    req.generateWord();
+  if (!req.session.state) {
+    req.generateState();
   }
 
   next();

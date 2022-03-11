@@ -14,11 +14,11 @@ $ cp .env.example .env
 
 The API is accessible at `<base URL>/api/`. Some variables such as `APP_PORT` and `SESSION_SECRET` may be modified in `.env` if you want to fine tune the default configuration.\
 \
-After making a successful request to any endpoint from the client, a cookie will be created which contains the user's session ID. The session stores some information about the user's game state such as the word currently in play.
+After making a successful request to any endpoint from the client, a cookie will be created which contains the user's session ID. The session stores information about the user's game state such as the word currently in play.
 
 # Endpoints
 ### GET - `/word`
-Gets the word currently in play. This endpoint is mainly used for testing purposes.
+Gets the game state for the current session. This endpoint is intended to be used for testing and/or debugging purposes.
 
 ### Parameters
 | Input | Type | Description |
@@ -26,13 +26,13 @@ Gets the word currently in play. This endpoint is mainly used for testing purpos
 | None. |      |             |
 
 ### Response
-| Output | Type   | Description                |
-|--------|--------|----------------------------|
-| word   | string | The word currently in play |
+| Output | Type  | Description                                |
+|--------|-------|--------------------------------------------|
+| state  | array | Contains the ID and word of the game state |
 ---
 
 ### POST - `/word`
-Generates a new word and saves it in the session.
+Generates a new game state for the current session.
 
 ### Parameters
 | Input | Type | Description |
@@ -46,7 +46,7 @@ Generates a new word and saves it in the session.
 ---
 
 ### POST - `/word/guess`
-Compares the provided word against the generated word.
+Compares the provided word against the word in the game state.
 
 ### Parameters
 | Input | Type   | Description |
@@ -54,8 +54,9 @@ Compares the provided word against the generated word.
 | word  | string |             |
 
 ### Response
-| Output     | Type     | Description                                        |
-|------------|----------|----------------------------------------------------|
-| correct    | boolean  | Whether or not it is an exact match                |
-| letters    | Letter[] | List of letters indicating the status of the match |
+| Output  | Type     | Description                                        |
+|---------|----------|----------------------------------------------------|
+| state   | string   | The ID of the game state                           |
+| correct | boolean  | Whether or not it is an exact match                |
+| letters | Letter[] | List of letters indicating the status of the match |
 ---

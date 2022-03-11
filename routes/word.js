@@ -4,11 +4,11 @@ const { validateWord } = require('../lib/util');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send(req.session.word);
+  res.send(req.session.state);
 });
 
 router.post('/', (req, res) => {
-  req.generateWord();
+  req.generateState();
 
   res.status(201).json({
     success: true,
@@ -17,8 +17,9 @@ router.post('/', (req, res) => {
 
 router.post('/guess', (req, res) => {
   const { word } = req.body;
+  const { state } = req.session;
 
-  const result = validateWord(word, req.session.word);
+  const result = validateWord(word, state.word);
 
   if (!result) {
     return res.status(404).json({
@@ -26,11 +27,10 @@ router.post('/guess', (req, res) => {
     });
   }
 
-  if (result.correct) {
-    req.session.destroy();
-  }
-
-  res.json(result);
+  res.json({
+    state: state.id,
+    ...result,
+  });
 });
 
 module.exports = router;
