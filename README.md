@@ -56,9 +56,9 @@ Compares the provided word against the word in the game state.
 | word  | string |             |
 
 ### Response
-| Output  | Type     | Description                                    |
-|---------|----------|------------------------------------------------|
-| state   | string   | The ID of the game state                       |
-| correct | boolean  | Indicates whether is an exact match or not     |
-| letters | Letter[] | Lists the correctness of presence and location |
+| Output  | Type     | Description                                              |
+|---------|----------|----------------------------------------------------------|
+| state   | string   | The ID of the game state                                 |
+| correct | boolean  | Whether or not the word is an exact match                |
+| letters | Letter[] | The correctness of presence and location for each letter |
 ---
