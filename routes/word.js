@@ -4,19 +4,16 @@ const { validateWord } = require('../lib/word');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send(req.session.state);
+  res.send(req.state);
 });
 
-router.post('/', (req, res) => {
-  res.status(201).json({
-    state: req.generateState(),
-  });
-});
+router.post('/guess/:word?', (req, res) => {
+  const { state } = req;
 
-router.post('/guess', (req, res) => {
-  const { state } = req.session;
-
-  const result = validateWord(req.body.word || '', state.word);
+  const result = validateWord(
+    req.params.word || req.body.word || '',
+    state.solution
+  );
 
   if (!result) {
     return res.status(404).json({
