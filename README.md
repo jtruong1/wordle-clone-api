@@ -1,4 +1,6 @@
 # wordle-clone-api
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/1c8487ffe2f9ddcb7491?action=collection%2Fimport)
+
 A minimally opinionated REST API for Wordle-like applications.
 
 To prevent cheating, the word will not be exposed to the client. This means that the client must communicate with the API any time a user wishes to guess the word. The result of the response will contain the correctness of presence and location for each letter.
@@ -16,7 +18,7 @@ $ git clone https://github.com/jtruong1/wordle-clone-api.git
 $ cp .env.example .env
 ```
 
-Some variables such as `APP_PORT` and `SESSION_SECRET` may be modified in `.env` if you wish to fine-tune the default configuration. Deployment to Heroku is supported out of the box.
+Some core settings such as `APP_PORT` and `SESSION_SECRET` may be modified in `.env` if you wish to fine-tune the default configuration. Deployment to Heroku is supported out of the box, however it is recommended to configure `SESSION_SECRET` for production regardless on how you are deploying the project.
 
 # Endpoints
 ### GET - `/word`
