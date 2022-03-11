@@ -9,6 +9,7 @@ const config = {
     secret: process.env.SESSION_SECRET || 'secret',
     resave: false,
     saveUninitialized: false,
+    unset: 'destroy',
     cookie: {
       httpOnly: true,
       sameSite: true,

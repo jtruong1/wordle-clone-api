@@ -1,8 +1,12 @@
 const { getRandomWord } = require('../lib/util');
 
 module.exports = (req, res, next) => {
-  if (!req.session.word) {
+  req.generateWord = () => {
     req.session.word = getRandomWord();
+  };
+
+  if (!req.session.word) {
+    req.generateWord();
   }
 
   next();

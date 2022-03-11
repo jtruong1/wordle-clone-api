@@ -1,5 +1,5 @@
 const express = require('express');
-const { validateWord, getRandomWord } = require('../lib/util');
+const { validateWord } = require('../lib/util');
 
 const router = express.Router();
 
@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  req.session.word = getRandomWord();
+  req.generateWord();
 
   res.status(201).json({
     success: true,
@@ -24,6 +24,10 @@ router.post('/guess', (req, res) => {
     return res.status(404).json({
       error: 'Not in word list',
     });
+  }
+
+  if (result.correct) {
+    req.session.destroy();
   }
 
   res.json(result);
