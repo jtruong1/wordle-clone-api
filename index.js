@@ -1,15 +1,24 @@
 const express = require('express');
+const middleware = require('./middleware');
+const { getRandomWord, validateWord } = require('./lib/util');
+
 const app = express();
 
-const { getRandomWord } = require('./lib/util');
+app.use(middleware());
 
-let currentWord = getRandomWord();
+let word = getRandomWord();
 
 app.get('/', (req, res) => {
-  res.send(currentWord);
+  res.send(word);
+});
+
+app.post('/validate', (req, res) => {
+  const { state } = req.body;
+
+  res.json(validateWord(state.word, word));
 });
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
-  console.log('Current word:', currentWord);
+  console.log('Current word:', word);
 });
