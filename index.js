@@ -6,7 +6,7 @@ const routes = require('./routes');
 const app = express();
 
 app.use(middleware());
-app.use('/api', routes());
+app.use(config.path, routes());
 
 app.listen(config.port, () => {
   console.log('Server is running on port', config.port);
