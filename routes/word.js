@@ -1,5 +1,5 @@
 const express = require('express');
-const { validateWord } = require('../lib/util');
+const { validateWord } = require('../lib/word');
 
 const router = express.Router();
 
