@@ -1,7 +1,7 @@
 # wordle-clone-api
 REST API for wordle-clone.
 
-To prevent cheating, the word will not be exposed to the client until the user has guessed the word. The API will also provide a mechanism to allow the user to guess the word via the `/word/validate` endpoint. The user should be notified if their guess is correct or incorrect based on the result provided.
+To prevent cheating, the word will not be exposed to the client until the user has guessed the word. The API will also provide a mechanism to allow the user to guess the word via the `/word/guess` endpoint. The user should be notified if their guess is correct or incorrect based on the result provided.
 
 # Quick Start
 ```bash
