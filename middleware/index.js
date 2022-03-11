@@ -8,7 +8,7 @@ const state = require('./state');
 module.exports = () => {
   const router = express.Router();
 
-  router.use(cors());
+  router.use(cors({ origin: true, credentials: true }));
   router.use(express.json());
   router.use(
     session({

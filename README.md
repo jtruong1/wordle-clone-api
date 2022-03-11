@@ -20,6 +20,10 @@ $ cp .env.example .env
 
 Some core settings such as `APP_PORT` and `SESSION_SECRET` may be modified in `.env` if you wish to fine-tune the default configuration. Deployment to Heroku is supported out of the box, however it is recommended to configure `SESSION_SECRET` for production regardless of how you are deploying the project.
 
+Depending on the HTTP client you are using, you may need to ensure that it is able to accept session cookies by setting `XMLHttpRequest.withCredentials` to true. For Axios, a property called `withCredentials` is accessible in the request config.
+
+In the near future, session cookies will be replaced with something more frontend agonistic.
+
 # Endpoints
 ### GET - `/word`
 Gets the game state for the current session. This endpoint is intended to be used for testing and/or debugging purposes.
