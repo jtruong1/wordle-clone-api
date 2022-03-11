@@ -1,7 +1,11 @@
 # wordle-clone-api
-A frontend agnostic and somewhat opinionated REST API for Wordle-like applications.
+A frontend agnostic and minimally opinionated REST API for Wordle-like applications.
 
-To prevent cheating, the word will not in any way be exposed to the client. This means that the client must communicate with the API each time a user is attempting to guess the word via the `/word/guess` endpoint. The result of the response will contain the correctness of locations as well as presence for each letter.
+To prevent cheating, the word will not be exposed to the client. This means that the client must communicate with the API any time a user wishes to guess the word. The result of the response will contain the correctness of presence and location for each letter.
+
+For initial requests to any available endpoint, a cookie will be sent which contains the client's session ID. The session stores information about the client's game state such as the word currently in play.
+
+By default, cookies (and its associated session) expire after 24 hours of its initial creation. An endpoint to regenerate the game state whilst retaining the session is provided for your convenience.
 
 # Quick Start
 ```bash
@@ -12,9 +16,7 @@ $ git clone https://github.com/jtruong1/wordle-clone-api.git
 $ cp .env.example .env
 ```
 
-The API is accessible at `<base URL>/api/`. Some variables such as `APP_PORT` and `SESSION_SECRET` may be modified in `.env` if you want to fine tune the default configuration.\
-\
-After making a successful request to any endpoint from the client, a cookie will be created which contains the user's session ID. The session stores information about the user's game state such as the word currently in play.
+Some variables such as `APP_PORT` and `SESSION_SECRET` may be modified in `.env` if you wish to fine-tune the default configuration. Deployment to Heroku is supported out of the box.
 
 # Endpoints
 ### GET - `/word`
@@ -23,7 +25,7 @@ Gets the game state for the current session. This endpoint is intended to be use
 ### Parameters
 | Input | Type | Description |
 |-------|------|-------------|
-| None. |      |             |
+| None  |      |             |
 
 ### Response
 | Output | Type  | Description                                |
@@ -37,12 +39,12 @@ Generates a new game state for the current session.
 ### Parameters
 | Input | Type | Description |
 |-------|------|-------------|
-| None. |      |             |
+| None  |      |             |
 
 ### Response
 | Output  | Type | Description |
 |---------|------|-------------|
-| success | true |
+| success | true |             |
 ---
 
 ### POST - `/word/guess`
@@ -54,9 +56,9 @@ Compares the provided word against the word in the game state.
 | word  | string |             |
 
 ### Response
-| Output  | Type     | Description                                        |
-|---------|----------|----------------------------------------------------|
-| state   | string   | The ID of the game state                           |
-| correct | boolean  | Whether or not it is an exact match                |
-| letters | Letter[] | List of letters indicating the status of the match |
+| Output  | Type     | Description                                    |
+|---------|----------|------------------------------------------------|
+| state   | string   | The ID of the game state                       |
+| correct | boolean  | Indicates whether is an exact match or not     |
+| letters | Letter[] | Lists the correctness of presence and location |
 ---
