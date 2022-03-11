@@ -13,7 +13,7 @@ const config = {
     cookie: {
       httpOnly: true,
       sameSite: true,
-      maxAge: process.env.SESSION_LIFETIME || 60 * 60 * 1000,
+      maxAge: process.env.SESSION_LIFETIME || 86400000, // 24 hours
     },
   },
 };
