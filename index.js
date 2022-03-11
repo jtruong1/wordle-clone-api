@@ -1,8 +1,12 @@
 const express = require('express');
 const app = express();
 
+const _ = require('lodash');
+
+const words = require('./data/words.json');
+
 app.get('/', (req, res) => {
-  res.send('Hello world!');
+  res.send(_.sample(words));
 });
 
 app.listen(3000, () => {
