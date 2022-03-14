@@ -33,8 +33,8 @@ Gets the current game state. This endpoint is intended to be used for testing an
 | state  | array | Contains the ID and solution of the game state |
 ---
 
-### POST - `/word/guess/:word?`
-Compares a word against the solution in the game state. You can either pass the word in the request body or as a route parameter.
+### POST - `/word/guess/{word?}`
+Compares a word against the solution in the game state. You can pass the word via the route parameter or as part of the request body.
 
 ### Parameters
 | Input | Type   | Description |
